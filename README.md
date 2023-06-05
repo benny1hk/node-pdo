@@ -98,6 +98,9 @@ Returns a Promise which resolves to the rows returned.
 `PDO::query()` and `PDO::queryAll()` return all rows.  
 `PDO::queryOne()` returns a single row.  
 `PDO::queryColumn()` returns a single field from a single row.  
+`PDO::beginTransaction()` initiates a transaction.
+`PDO::commit()` commits a transaction.
+`PDO::rollback()` rolls back a transaction. 
 
 Promise will reject on error.
 

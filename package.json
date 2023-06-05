@@ -10,7 +10,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mikuso/node-pdo.git"
+        "url": "git+https://github.com/benny1hk/node-pdo.git"
     },
     "keywords": [
         "pdo",

@@ -68,6 +68,21 @@ function dbQueryAll($sql, $params = array()) {
     return $result;
 }
 
+function dbBeginTransaction(){
+    global $db;
+    return $db->beginTransaction();
+}
+
+function dbRollBack(){
+    global $db;
+    return $db->rollBack();
+}
+
+function dbCommit(){
+    global $db;
+    return $db->commit();
+}
+
 function toNode($res) {
     $resjson = json_encode($res);
     echo pack("V", strlen($resjson));
@@ -105,6 +120,9 @@ while(($binlen = fread(STDIN, 4)) !== false){
             case 'exec': $res = call_user_func_array('dbExec', $json->params); break;
             case 'queryOne': $res = call_user_func_array('dbQueryOne', $json->params); break;
             case 'queryAll': $res = call_user_func_array('dbQueryAll', $json->params); break;
+            case 'beginTransaction': $res = call_user_func_array('dbBeginTransaction', $json->params); break;
+            case 'rollback': $res = call_user_func_array('dbRollback', $json->params); break;
+            case 'commit': $res = call_user_func_array('dbCommit', $json->params); break;
             default: throw new Exception("Unexpected command: {$json->cmd}");
         }
         $mess = ob_get_contents();
